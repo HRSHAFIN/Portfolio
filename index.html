@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -46,6 +46,12 @@
     </header>
 
     <section id="home" class="hero animated-bg">
+        <div class="bg-shapes">
+        <div id="particles-js"></div>
+        <div class="shape s1"></div>
+        <div class="shape s2"></div>
+        <div class="shape s3"></div>
+    </div>
         <div class="hero-content reveal">
             <h3>Hello, I'm</h3>
             <h1>Md. Hasibur <span>Rahman</span></h1>
@@ -294,6 +300,70 @@
             </div>
         </div>
     </section>
+
+    <section id="certificates" class="certificates">
+        <div class="container reveal">
+            <h2 class="section-title">Cer<span>tificates</span></h2>
+            <div class="project-grid"> 
+                
+                <div class="project-card tilt-card">
+                    <div class="project-img">
+                        <img src="image/dbht.jpg" alt="DB Hackathon Certificate">
+                        <div class="project-overlay">
+                            <a href="image/dbht.jpg" target="_blank" class="btn primary-btn"><i class="fas fa-search-plus"></i> View Full</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>DB Hackathon: Database Design Challenge</h3>
+                        <p>North South University</p>
+                    </div>
+                </div>
+
+                <div class="project-card tilt-card">
+                    <div class="project-img">
+                        <img src="image/gd.jpg" alt="Graphics Design Certificate">
+                        <div class="project-overlay">
+                            <a href="image/gd.jpg" target="_blank" class="btn primary-btn"><i class="fas fa-search-plus"></i> View Full</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Graphics Design Certificate on Adobe Photoshop & Illustrator</h3>
+                        <p>Creative Troops</p>
+                    </div>
+                </div>
+
+                <div class="project-card tilt-card">
+                    <div class="project-img">
+                        <img src="image/bcc.png" alt="Intermediate Course of English Language">
+                        <div class="project-overlay">
+                            <a href="image/bcc.png" target="_blank" class="btn primary-btn"><i class="fas fa-search-plus"></i> View Full</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Intermediate Course of English Language</h3>
+                        <p>British Council</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+<section id="resume-viewer" class="resume-viewer bg-alt">
+    <div class="container reveal">
+        <h2 class="section-title">My <span>Resume</span></h2>
+        <div class="resume-container">
+            <div class="mobile-pdf-overlay">
+                <i class="fas fa-file-pdf"></i>
+                <h3>MY RESUME</h3>
+                <p>Click below to view the optimized mobile version.</p>
+                <a href="image/cv_hr.pdf" target="_blank" class="btn primary-btn">Open Full CV</a>
+            </div>
+            
+            <iframe src="image/cv_hr.pdf#view=FitH" width="100%" height="100%" style="border: none;"></iframe>
+        </div>
+    </div>
+</section>
 
     <section id="contact" class="contact">
         <div class="container reveal">
