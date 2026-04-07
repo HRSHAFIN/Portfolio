@@ -121,6 +121,12 @@ header.scrolled { padding: 0.5rem 0; box-shadow: 0 5px 20px rgba(0,0,0,0.4); }
 .typing-cursor { animation: blink 0.7s infinite; color: var(--primary-color); font-weight: 300; }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
+/* --- Floating Animation --- */
+.floating { animation: float 6s ease-in-out infinite; }
+@keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
+.hover-lift { transition: transform 0.4s var(--bezier-smooth), box-shadow 0.4s var(--bezier-smooth); }
+.hover-lift:hover { transform: translateY(-10px); box-shadow: var(--shadow), var(--glow); border-color: var(--border-color); }
+
 /* --- About Section --- */
 .about-content { display: flex; align-items: center; gap: 5rem; }
 .about-img { flex: 1; position: relative; min-width: 300px; }
