@@ -206,32 +206,30 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Robust PDF Loader
-    const resumeIframe = document.querySelector('.resume-viewer iframe');
-    const resumeSection = document.querySelector('#resume-viewer');
+    // Optimized PDF Loader for Mobile/PC
+const resumeIframe = document.querySelector('.resume-viewer iframe');
+const resumeSection = document.querySelector('#resume-viewer');
 
-    if (resumeSection && resumeIframe) {
-        const loadPDF = () => {
-            if (!resumeIframe.src.includes('image/cv_hr.pdf')) {
-                resumeIframe.src = "image/cv_hr.pdf#toolbar=0";
-            }
-        };
+// Check if user is on Desktop (Pointer: fine means they have a mouse)
+const isDesktop = window.matchMedia("(pointer: fine)").matches;
 
-        // Use the existing observer to trigger the load
+if (resumeSection && resumeIframe) {
+    if (isDesktop) {
+        // Desktop: Use the observer to load the PDF preview
         const pdfObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    loadPDF();
+                if (entry.isIntersecting && !resumeIframe.src.includes('resume.pdf')) {
+                    resumeIframe.src = "image/cv_hr.pdf#toolbar=0";
                 }
             });
         }, { threshold: 0.1 });
-
         pdfObserver.observe(resumeSection);
-        
-        // Backup: Load if the button is clicked or after 3 seconds
-        document.getElementById('view-resume-btn')?.addEventListener('click', loadPDF);
-        setTimeout(loadPDF, 3000); 
+    } else {
+        // Mobile: Explicitly DO NOT set a source for the iframe
+        // This prevents the "external app" warning you're seeing
+        resumeIframe.removeAttribute('src'); 
     }
+}
 
     // Refresh Reveal for Certificates and Resume
     document.querySelectorAll('.reveal').forEach(el => {
