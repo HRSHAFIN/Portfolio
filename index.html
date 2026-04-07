@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Md. Hasibur Rahman | Portfolio</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="scroll-progress"></div>
+
+    <div class="cursor-dot" data-cursor></div>
+    <div class="cursor-outline" data-cursor></div>
+
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <button id="scrollToTopBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">HR<span class="dot">.</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button id="theme-btn"><i class="fas fa-moon"></i></button>
+                <div class="hamburger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero animated-bg">
+        <div class="hero-content reveal">
+            <h3>Hello, I'm</h3>
+            <h1>Md. Hasibur <span>Rahman</span></h1>
+            <h2><span class="typing-text"></span><span class="typing-cursor">|</span></h2>
+            <p>Passionate about building intelligent, scalable, and user-centric applications.</p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn primary-btn">Explore Work</a>
+                <a href="#contact" class="btn secondary-btn">Let's Talk</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container reveal">
+            <h2 class="section-title">About <span>Me</span></h2>
+            <div class="about-content">
+                <div class="about-img floating">
+                    <img src="image/my.png" alt="Md. Hasibur Rahman">
+                </div>
+                <div class="about-text">
+                    <h3>Computer Science & Engineering Student at North South University</h3>
+                    <p>I am a forward-thinking developer currently pursuing my BSc in CSE at North South University. With a strong foundation in Artificial Intelligence, Machine Learning, and Advanced Database Systems, I thrive at the intersection of complex data and elegant design.</p>
+                    <p>My technical journey spans frontend web architectures and flutter app development. Beyond writing code, I have a keen eye for professional photo editing, graphic design and a deep passion for high-performance hardware architecture and custom PC building. I pride myself on rapidly adapting to new technologies to build robust, modern solutions.</p>
+                    <div class="personal-info">
+                        <div class="info-item"><i class="fas fa-envelope"></i> Frontend Web Architectures</div>
+                        <div class="info-item"><i class="fas fa-graduation-cap"></i> Flutter App Development</div>
+                        <div class="info-item"><i class="fas fa-laptop-code"></i> AI, ML & Database Systems</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills bg-alt">
+        <div class="container reveal">
+            <h2 class="section-title">Technical <span>Arsenal</span></h2>
+            <div class="skills-grid">
+                
+                <div class="skill-category hover-lift">
+                    <h3><i class="fas fa-code"></i> Programming</h3>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>HTML/CSS</span><span>90%</span></div>
+                        <div class="progress-bar"><div class="progress" data-width="90%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>JavaScript</span><span>80%</span></div>
+                        <div class="progress-bar"><div class="progress" data-width="80%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>Java</span><span>75%</span></div>
+                        <div class="progress-bar"><div class="progress" data-width="75%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>SQL</span><span>85%</span></div>
+                        <div class="progress-bar"><div class="progress" data-width="85%"></div></div>
+                    </div>
+                </div>
+
+                <div class="skill-category hover-lift">
+                    <h3><i class="fas fa-brain"></i> AI & ML</h3>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>Machine Learning</span><span>75%</span></div>
+                        <div class="progress-bar"><div class="progress" data-width="75%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>Data Processing</span><span>80%</span></div>
+                        <div class="progress-bar"><div class="progress" data-width="80%"></div></div>
+                    </div>
+                </div>
+
+                <div class="skill-category hover-lift">
+                    <h3><i class="fas fa-tools"></i> Tools & Tech</h3>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>Git / GitHub</span><span>85%</span></div>
+                        <div class="progress-bar"><div class="progress" data-width="85%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>Flutter</span><span>70%</span></div>
+                        <div class="progress-bar"><div class="progress" data-width="70%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>VS Code</span><span>80%</span></div>
+                        <div class="progress-bar"><div class="progress" data-width="80%"></div></div>
+                    </div>
+                </div>
+
+                <div class="skill-category hover-lift">
+                    <h3><i class="fas fa-palette"></i> Graphics Design</h3>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>Photo Editing</span><span>90%</span></div>
+                        <div class="progress-bar"><div class="progress" data-width="90%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>Logo Design</span><span>85%</span></div>
+                        <div class="progress-bar"><div class="progress" data-width="85%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>UI/UX Prototyping</span><span>80%</span></div>
+                        <div class="progress-bar"><div class="progress" data-width="80%"></div></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="container reveal">
+            <h2 class="section-title">Featured <span>Projects</span></h2>
+            
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web Dev</button>
+                <button class="filter-btn" data-filter="mobile">Mobile App</button>
+                <button class="filter-btn" data-filter="ai">AI / ML</button>
+                <button class="filter-btn" data-filter="security">Security</button> 
+            </div>
+
+            <div class="project-grid">
+                
+                <div class="project-card tilt-card" data-category="web">
+                    <div class="project-img">
+                        <img src="image/dbk.png" alt="Doinik Bangla Kagoj">
+                        <div class="project-overlay">
+                            <a href="project-dbk.html" class="btn primary-btn"><i class="fas fa-eye"></i> Case Study</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Doinik Bangla Kagoj</h3>
+                        <p>A feature-rich, responsive news portal with real-time search, dynamic tickers, and a full admin dashboard.</p>
+                        <div class="tech-stack"><span>HTML/CSS</span><span>JavaScript</span><span>php</span><span>SQL</span></div>
+                    </div>
+                </div>
+
+                <div class="project-card tilt-card" data-category="web">
+                    <div class="project-img">
+                        <img src="image/hn.png" alt="Hishab Nikash">
+                        <div class="project-overlay">
+                            <a href="project-hishab.html" class="btn primary-btn"><i class="fas fa-eye"></i> Case Study</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Hishab Nikash</h3>
+                        <p>A complete frontend prototype for a Web-Based Accounting & Financial Management System.</p>
+                        <div class="tech-stack"><span>HTML/CSS</span><span>JavaScript</span><span>Local Storage API</span><span>UI/UX</span></div>
+                    </div>
+                </div>
+
+                <div class="project-card tilt-card" data-category="mobile">
+                    <div class="project-img">
+                        <img src="image/ff.png" alt="FoodFeed App">
+                        <div class="project-overlay">
+                            <a href="project-foodfeed.html" class="btn primary-btn"><i class="fas fa-eye"></i> Case Study</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>FoodFeed App</h3>
+                        <p>A responsive Flutter-based application featuring a dynamic UI for a social food feed.</p>
+                        <div class="tech-stack"><span>Flutter</span><span>Dart</span><span>Firebase</span></div>
+                    </div>
+                </div>
+
+                <div class="project-card tilt-card" data-category="security">
+                    <div class="project-img">
+                        <img src="image/qn.png" alt="BB84 QKD">
+                        <div class="project-overlay">
+                            <a href="project-quantum.html" class="btn primary-btn"><i class="fas fa-eye"></i> Case Study</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>BB84 QKD Dual-Phase Exploit</h3>
+                        <p>Cybersecurity and quantum computing research analyzing vulnerabilities in the BB84 QKD protocol.</p>
+                        <div class="tech-stack"><span>Quantum</span><span>Cryptography</span><span>Python</span></div>
+                    </div>
+                </div>
+
+                <div class="project-card tilt-card" data-category="ai">
+                    <div class="project-img">
+                        <img src="image/ml.png" alt="ML Pipeline">
+                        <div class="project-overlay">
+                            <a href="project-ml.html" class="btn primary-btn"><i class="fas fa-eye"></i> Case Study</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Machine Learning Pipeline</h3>
+                        <p>End-to-end ML pipeline built to process, clean, and extract insights from raw datasets.</p>
+                        <div class="tech-stack"><span>Python</span><span>Pandas</span><span>Scikit-Learn</span></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="timeline-section bg-alt">
+        <div class="container reveal">
+            <div class="timeline-container">
+                
+                <div class="timeline-column">
+                    <h2 class="section-title">My <span>Experience</span></h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">2025</div>
+                            <h3>Junior Developer Intern</h3>
+                            <h4>8bit Private Limited</h4>
+                            <p>Collaborating with senior developers to build scalable web applications. Assisting in frontend architecture and integrating API endpoints.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">2023 – Present</div>
+                            <h3>Graphics Designer</h3>
+                            <h4>ICMA NSU Student Chapter</h4>
+                            <p>Designed marketing materials, event banners, and social media posts, maintaining brand consistency and improving engagement for the student chapter.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-column">
+                    <h2 class="section-title">My <span>Education</span></h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">2021 – Present</div>
+                            <h3>BSc in Computer Science & Engineering</h3>
+                            <h4>North South University</h4>
+                            <p>Specializing in Artificial Intelligence, Machine Learning, and Advanced Database Systems.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">2020</div>
+                            <h3>Higher Secondary Certificate</h3>
+                            <h4>Shaheed Police Smrity College</h4>
+                            <p>Science Group. Graduated with a GPA of 5.00.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">2018</div>
+                            <h3>Secondary School Certificate</h3>
+                            <h4>Govt. Mohammadpur Model School & College</h4>
+                            <p>Science Group. Graduated with a GPA of 4.83.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container reveal">
+            <h2 class="section-title">Let's <span>Connect</span></h2>
+            
+            <div class="contact-wrapper">
+                <div class="contact-panel text-center">
+                    <h3>Ready to start a project or have feedback?</h3>
+                    <p>If you have something to say about me, or if you'd like to contact me for an internship opportunity, I'd love to hear from you!</p>
+                    
+                    <div class="contact-cards-row">
+                        <div class="info-card">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>hasiburshafin@gmail.com</p>   
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+8801707533023</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="google-form-cta">
+                        <a href="https://forms.gle/cb4RBR95YPdgtgkT6" target="_blank" class="btn primary-btn btn-large solid-glow">
+                            <i class="fab fa-google"></i> Contact me through Google Form!
+                        </a>
+                    </div>
+                    
+                    <div class="social-links justify-center">
+                        <a href="https://www.linkedin.com/in/md-hasibur-rahman-10367136a/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/HRSHAFIN" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.facebook.com/ks.shafin" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Md. Hasibur Rahman. </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doinik Bangla Kagoj | Professional News Portal</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .back-nav {
+            position: fixed; top: 2rem; left: 2rem; z-index: 1000;
+            display: flex; align-items: center; gap: 0.8rem;
+            font-weight: 500; font-size: 1.1rem; color: var(--text-primary);
+            background: var(--card-bg); padding: 0.8rem 1.5rem;
+            border-radius: 30px; border: 1px solid var(--border-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s var(--bezier-smooth);
+        }
+        .back-nav:hover {
+            color: #fff; background: var(--primary-color);
+            border-color: var(--primary-color); transform: translateX(-5px);
+        }
+        
+        .project-header { padding: 10rem 0 4rem; text-align: center; }
+        .project-header h1 { font-size: 3.5rem; margin-bottom: 1.5rem; line-height: 1.2; font-weight: 700; }
+        .project-header h1 span { color: var(--primary-color); }
+        
+        .project-meta { 
+            display: flex; justify-content: center; gap: 2.5rem; 
+            margin-bottom: 3rem; color: var(--text-secondary); flex-wrap: wrap; 
+        }
+        .project-meta span { display: flex; align-items: center; gap: 0.5rem; font-weight: 500; font-size: 1.1rem; }
+        .project-meta i { color: var(--primary-color); }
+        
+        .project-banner { 
+            width: 100%; max-height: 550px; object-fit: cover; 
+            border-radius: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); 
+            margin-bottom: -5rem; position: relative; z-index: 2;
+            border: 1px solid var(--border-color);
+        }
+        
+        .project-content-card { 
+            background: linear-gradient(145deg, var(--card-bg), var(--bg-alt)); 
+            border: 1px solid var(--border-color); border-radius: 30px; 
+            padding: 8rem 4rem 4rem 4rem; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4); 
+            position: relative; z-index: 1;
+        }
+
+        .content-section { margin-bottom: 3.5rem; }
+        .content-section h2 { font-size: 2rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; text-align: left; color: var(--text-primary); }
+        .content-section h2 i { color: var(--primary-color); font-size: 1.8rem; }
+        .content-section p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 1rem; text-align: left; }
+        
+        .content-list { margin-left: 1.5rem; margin-bottom: 1.5rem; text-align: left; }
+        .content-list li { margin-bottom: 0.8rem; color: var(--text-secondary); font-size: 1.1rem; list-style-type: square; line-height: 1.6; }
+        .content-list li strong { color: var(--text-primary); }
+
+        .project-actions { 
+            display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;
+            margin-top: 4rem; padding-top: 4rem; border-top: 1px solid var(--border-color); 
+        }
+
+        @media (max-width: 768px) {
+            .project-header { padding: 7rem 0 3rem; }
+            .project-header h1 { font-size: 2.5rem; }
+            .project-content-card { padding: 6rem 2rem 3rem 2rem; }
+            .back-nav { top: 1rem; left: 1rem; font-size: 0.9rem; padding: 0.6rem 1rem; }
+            .project-meta { gap: 1rem; flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <div id="scroll-progress"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    <div id="preloader"><div class="spinner"></div></div>
+
+    <!-- <a href="index.html#projects" class="back-nav">
+        <i class="fas fa-arrow-left"></i> Back to Portfolio
+    </a> -->
+
+    <button id="theme-btn" style="position: fixed; top: 2rem; right: 2rem; z-index: 1000; background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-primary); width: 50px; height: 50px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: 0.3s;">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <div class="container">
+        <section class="project-header">
+            <h1>Doinik Bangla <span>Kagoj</span></h1>
+            
+            <div class="project-meta">
+                <span><i class="fas fa-calendar-alt"></i> 2025</span>
+                <span><i class="fas fa-newspaper"></i> News & Editorial Portal</span>
+                <span><i class="fas fa-user-shield"></i> Fullstack Web Architect</span>
+            </div>
+
+            <img src="image/dbk.png" alt="Doinik Bangla Kagoj Preview" class="project-banner hover-lift">
+            <p> </p>
+            <img src="image/dbk2.png" alt="Doinik Bangla Kagoj Preview" class="project-banner hover-lift">
+            
+            <div class="project-content-card">
+                
+                <div class="content-section">
+                    <h2><i class="fas fa-search"></i> Project Overview</h2>
+                    <p>Doinik Bangla Kagoj is a feature-rich, fully responsive news application designed to provide a premium reading experience. It functions as a complete digital newsroom, featuring real-time search, dynamic category filtering, a trending story carousel, and a customized administrative dashboard. The platform is optimized for performance and accessibility across desktop and mobile devices.</p>
+                </div>
+
+                <div class="content-section">
+                    <h2><i class="fas fa-exclamation-triangle"></i> The Challenge</h2>
+                    <p>The primary challenge was managing a high volume of dynamic content entirely on the client side while maintaining a "snappy" feel. I needed to implement complex pagination and real-time search filtering logic that could handle large arrays of news objects. Additionally, creating a secure-feeling administrative workflow for content creation and ticker management within a local-storage-based architecture required precise state management.</p>
+                </div>
+
+                <div class="content-section">
+                    <h2><i class="fas fa-lightbulb"></i> Key Features</h2>
+                    <ul class="content-list">
+                        <li><strong>Content Management System (CMS):</strong> Admins can create, edit, and delete articles directly through the UI, including dynamic image handling via the <strong>FileReader API</strong>.</li>
+                        <li><strong>Advanced Filtering & UX:</strong> Real-time keyword search, category sorting (Politics, Tech, Sports), and date-range filtering for deep archival access.</li>
+                        <li><strong>Dynamic Breaking News Ticker:</strong> A marquee-style notification system that admins can update and adjust for speed in real-time.</li>
+                        <li><strong>Interactive Engagement:</strong> A session-aware comment section allowing users to interact with individual news stories.</li>
+                        <li><strong>Persistent Dark Mode:</strong> A native implementation of dark/light theme switching that persists across sessions using <strong>localStorage</strong>.</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h2><i class="fas fa-layer-group"></i> Technical Arsenal</h2>
+                    <div class="tech-stack" style="font-size: 1rem; margin-top: 1rem; justify-content: flex-start;">
+                        <span>HTML5</span>
+                        <span>CSS3 (Flex/Grid/Variables)</span>
+                        <span>Vanilla JavaScript</span>
+                        <span>localStorage Persistence</span>
+                        <span>FileReader API</span>
+                    </div>
+                </div>
+
+                <div class="project-actions">
+                    <a href="https://github.com/HRSHAFIN/DOINIK-BANGLA" target="_blank" class="btn secondary-btn btn-large solid-glow">
+                        <i class="fab fa-github"></i> View Source Code
+                    </a>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <footer style="margin-top: 2rem;">
+        <p>&copy; 2026 Md. Hasibur Rahman.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const themeBtn = document.getElementById('theme-btn');
+            const themeIcon = themeBtn.querySelector('i');
+            if (localStorage.getItem('theme') === 'light') { 
+                document.body.setAttribute('data-theme', 'light'); 
+                themeIcon.classList.replace('fa-moon', 'fa-sun'); 
+            }
+            themeBtn.addEventListener('click', () => {
+                if (document.body.getAttribute('data-theme') === 'light') {
+                    document.body.removeAttribute('data-theme');
+                    localStorage.setItem('theme', 'dark');
+                    themeIcon.classList.replace('fa-sun', 'fa-moon');
+                } else {
+                    document.body.setAttribute('data-theme', 'light');
+                    localStorage.setItem('theme', 'light');
+                    themeIcon.classList.replace('fa-moon', 'fa-sun');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
