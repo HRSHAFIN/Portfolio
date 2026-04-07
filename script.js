@@ -128,17 +128,33 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // 8. Scroll Reveal
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                const progressBars = entry.target.querySelectorAll('.progress');
-                progressBars.forEach(bar => {
-                    bar.style.width = bar.getAttribute('data-width');
-                });
-            }
-        });
-    }, { threshold: 0.15 });
+   const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            
+            // NEW: Animate the skill numbers
+            const skillNumbers = entry.target.querySelectorAll('.skill-info span:last-child');
+            skillNumbers.forEach(num => {
+                const target = parseInt(num.innerText);
+                let count = 0;
+                const updateCount = () => {
+                    if (count < target) {
+                        count++;
+                        num.innerText = count + "%";
+                        setTimeout(updateCount, 17); // 17ms for ~60fps
+                    }
+                };
+                updateCount();
+            });
+
+            const progressBars = entry.target.querySelectorAll('.progress');
+            progressBars.forEach(bar => {
+                bar.style.width = bar.getAttribute('data-width');
+            });
+        }
+    });
+}, { threshold: 0.15 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
     // 9. Optimized 3D Tilt Effect (Desktop Only)
@@ -189,4 +205,67 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
+
+    // Robust PDF Loader
+    const resumeIframe = document.querySelector('.resume-viewer iframe');
+    const resumeSection = document.querySelector('#resume-viewer');
+
+    if (resumeSection && resumeIframe) {
+        const loadPDF = () => {
+            if (!resumeIframe.src.includes('image/cv_hr.pdf')) {
+                resumeIframe.src = "image/cv_hr.pdf#toolbar=0";
+            }
+        };
+
+        // Use the existing observer to trigger the load
+        const pdfObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    loadPDF();
+                }
+            });
+        }, { threshold: 0.1 });
+
+        pdfObserver.observe(resumeSection);
+        
+        // Backup: Load if the button is clicked or after 3 seconds
+        document.getElementById('view-resume-btn')?.addEventListener('click', loadPDF);
+        setTimeout(loadPDF, 3000); 
+    }
+
+    // Refresh Reveal for Certificates and Resume
+    document.querySelectorAll('.reveal').forEach(el => {
+        if (typeof observer !== 'undefined') observer.observe(el);
+    });
+
+    // 12. Particles.js Configuration
+    if (typeof particlesJS !== 'undefined') {
+        particlesJS('particles-js', {
+            "particles": {
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#f97316" }, // Matches your --primary-color
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.3, "random": false },
+                "size": { "value": 3, "random": true },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ef4444", // Matches your --secondary-color
+                    "opacity": 0.2,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false
+                }
+            },
+            "retina_detect": true
+        });
+    }
+
 });
