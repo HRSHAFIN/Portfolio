@@ -180,6 +180,23 @@ header.scrolled { padding: 0.5rem 0; box-shadow: 0 5px 20px rgba(0,0,0,0.4); }
 .timeline-item:hover .timeline-dot { transform: scale(1.2); box-shadow: 0 0 0 6px var(--bg-alt), 0 0 0 10px rgba(249, 115, 22, 0.4); }
 .timeline-date { display: inline-block; padding: 0.3rem 1rem; background: rgba(239, 68, 68, 0.1); color: var(--secondary-color); border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
 
+/* --- Certificate & Resume Layouts --- */
+.certificates { padding-bottom: 4rem; }
+.resume-viewer { padding: 6rem 0; }
+
+/* Ensure the iframe looks good on mobile */
+@media screen and (max-width: 768px) {
+    .resume-viewer .contact-panel { padding: 1.5rem; }
+    .resume-viewer div[style*="height: 700px"] { height: 450px !important; }
+    .resume-viewer h3 { font-size: 1rem; }
+}
+
+/* Maintain the hover effect for the certificate images */
+.certificates .project-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow), var(--glow);
+}
+
 /* --- UPDATED Contact Section --- */
 .contact-panel { position: relative; z-index: 1; background: linear-gradient(145deg, var(--card-bg), var(--bg-alt)); border: 1px solid var(--border-color); border-radius: 30px; padding: 4rem 3rem; width: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.4); text-align: center; }
 .contact-cards-row { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem; }
@@ -224,4 +241,114 @@ header.scrolled { padding: 0.5rem 0; box-shadow: 0 5px 20px rgba(0,0,0,0.4); }
     .contact-panel { padding: 3rem 1.5rem; }
     .info-card { flex-direction: column; text-align: center; padding: 1.5rem; gap: 0.8rem; }
     .google-form-cta .btn { width: 100%; padding: 1rem; font-size: 0.9rem; }
+}
+
+/* --- High-End Resume Viewer (PC & Mobile) --- */
+.resume-viewer { 
+    padding: 6rem 0; 
+}
+
+.resume-container {
+    width: 100%; 
+    height: 750px; /* PC View Height */
+    border-radius: 20px;
+    overflow: hidden; 
+    border: 1px solid var(--border-color); /* Matches your theme */
+    background: #333; 
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    box-shadow: var(--shadow); /* Uses your existing shadow */
+}
+
+.mobile-pdf-overlay { 
+    display: none; /* Hidden on PC */
+} 
+
+/* --- THE PERFECT MOBILE FIX --- */
+@media screen and (max-width: 768px) {
+    .resume-container { 
+        height: 400px; /* Compact height for phone */
+    }
+    
+    .resume-container iframe { 
+        display: none !important; /* Hide glitchy PDF on mobile */
+    }
+    
+    .mobile-pdf-overlay { 
+        display: flex; 
+        flex-direction: column; 
+        justify-content: center; 
+        align-items: center; 
+        height: 100%; 
+        background: var(--card-bg); /* Matches Dark/Light theme */
+        text-align: center;
+        padding: 2rem;
+    }
+
+    .mobile-pdf-overlay i {
+        font-size: 3.5rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+    }
+
+    .mobile-pdf-overlay h3 {
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+    }
+}
+/* --- Always-Running Background Animation --- */
+.bg-shapes {
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    overflow: hidden; 
+    z-index: 0; /* Behind your text but above the animated-bg */
+    pointer-events: none; /* Important: so you can still click your buttons */
+}
+
+.shape {
+    position: absolute;
+    background: var(--gradient); /* Uses your primary colors */
+    filter: blur(80px); /* Creates a soft, glowing tech look */
+    border-radius: 50%;
+    opacity: 0.15;
+    animation: float-bg 25s infinite alternate ease-in-out;
+}
+
+/* Position your 3 main glowing shapes */
+.s1 { width: 450px; height: 450px; top: -15%; left: -10%; }
+.s2 { width: 350px; height: 350px; bottom: 5%; right: -5%; animation-delay: -7s; }
+.s3 { width: 300px; height: 300px; top: 30%; left: 25%; animation-delay: -12s; }
+
+/* The movement logic */
+@keyframes float-bg {
+    0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+    50% { transform: translate(80px, 40px) rotate(45deg) scale(1.1); }
+    100% { transform: translate(-40px, 60px) rotate(90deg) scale(1); }
+}
+
+/* Ensure shapes don't crowd the screen on small phones */
+@media screen and (max-width: 768px) {
+    .s1 { width: 250px; height: 250px; }
+    .s2 { width: 200px; height: 200px; }
+    .s3 { display: none; } /* Remove 3rd shape for cleaner mobile view */
+}
+
+#particles-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Sits between the glowing shapes and the hero text */
+    pointer-events: none; /* Critical: allows clicking buttons through the particles */
+}
+
+/* Ensure hero-content stays on top of everything */
+.hero-content {
+    position: relative;
+    z-index: 2; 
 }
