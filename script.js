@@ -101,14 +101,57 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(typeEffect, 1000);
     }
 
-    // 7. Project Filtering
+    // 7. Project Filtering & See More Logic (COMBINED)
     const filterBtns = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
+    const projectCards = document.querySelectorAll('#projects .project-card'); 
+    const seeMoreBtn = document.getElementById('see-more-btn');
+    let isExpanded = false;
+
+    function applySeeMoreState() {
+        if (!seeMoreBtn) return;
+        
+        const activeFilterBtn = document.querySelector('.filter-btn.active');
+        const activeFilter = activeFilterBtn ? activeFilterBtn.getAttribute('data-filter') : 'all';
+        
+        if (activeFilter === 'all') {
+            seeMoreBtn.style.display = 'inline-block';
+            projectCards.forEach((card, index) => {
+                if (!isExpanded && index > 2) {
+                    card.classList.add('collapsed');
+                } else {
+                    card.classList.remove('collapsed');
+                }
+            });
+            seeMoreBtn.innerHTML = isExpanded 
+                ? 'See Less <i class="fas fa-chevron-up"></i>' 
+                : 'See More Projects <i class="fas fa-chevron-down"></i>';
+        } else {
+            seeMoreBtn.style.display = 'none';
+            projectCards.forEach(card => card.classList.remove('collapsed'));
+        }
+    }
+
+    applySeeMoreState();
+
+    if (seeMoreBtn) {
+        seeMoreBtn.addEventListener('click', () => {
+            isExpanded = !isExpanded;
+            applySeeMoreState();
+            if (isExpanded) {
+                setTimeout(() => window.dispatchEvent(new Event('scroll')), 50); 
+            }
+        });
+    }
+
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             filterBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
+            
             const filterValue = btn.getAttribute('data-filter');
+            
+            applySeeMoreState();
+            
             projectCards.forEach(card => {
                 card.style.transform = 'scale(0.8)';
                 card.style.opacity = '0';
@@ -127,57 +170,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // 7.1 See More Projects Logic
-    const seeMoreBtn = document.getElementById('see-more-btn');
-    const allProjectCards = document.querySelectorAll('.project-card');
-    let isExpanded = false;
-
-    function applySeeMoreState() {
-        // Check which filter is currently active
-        const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
-        
-        if (activeFilter === 'all') {
-            // Show button and apply collapse logic if 'All' is selected
-            seeMoreBtn.style.display = 'inline-block';
-            allProjectCards.forEach((card, index) => {
-                if (!isExpanded && index > 2) {
-                    card.classList.add('collapsed');
-                } else {
-                    card.classList.remove('collapsed');
-                }
-            });
-            // Update button text and icon
-            seeMoreBtn.innerHTML = isExpanded 
-                ? 'See Less <i class="fas fa-chevron-up"></i>' 
-                : 'See More Projects <i class="fas fa-chevron-down"></i>';
-        } else {
-            // Hide the button and show all relevant cards if a specific category is clicked
-            seeMoreBtn.style.display = 'none';
-            allProjectCards.forEach(card => card.classList.remove('collapsed'));
-        }
-    }
-
-    if (seeMoreBtn) {
-        applySeeMoreState(); // Run on load
-        
-        seeMoreBtn.addEventListener('click', () => {
-            isExpanded = !isExpanded;
-            applySeeMoreState();
-            
-            // Force a scroll event to trigger your reveal animations on the newly shown cards
-            if (isExpanded) {
-                setTimeout(() => window.dispatchEvent(new Event('scroll')), 50);
-            }
-        });
-
-        // Hook into your existing filter buttons to re-evaluate the See More state
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                setTimeout(applySeeMoreState, 10);
-            });
-        });
-    }
-    
     // 8. Scroll Reveal
    const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -258,29 +250,29 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Optimized PDF Loader for Mobile/PC
-const resumeIframe = document.querySelector('.resume-viewer iframe');
-const resumeSection = document.querySelector('#resume-viewer');
+    const resumeIframe = document.querySelector('.resume-viewer iframe');
+    const resumeSection = document.querySelector('#resume-viewer');
 
-// Check if user is on Desktop (Pointer: fine means they have a mouse)
-const isDesktop = window.matchMedia("(pointer: fine)").matches;
+    // Check if user is on Desktop (Pointer: fine means they have a mouse)
+    const isDesktop = window.matchMedia("(pointer: fine)").matches;
 
-if (resumeSection && resumeIframe) {
-    if (isDesktop) {
-        // Desktop: Use the observer to load the PDF preview
-        const pdfObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !resumeIframe.src.includes('resume.pdf')) {
-                    resumeIframe.src = "image/cv_hr.pdf#toolbar=0";
-                }
-            });
-        }, { threshold: 0.1 });
-        pdfObserver.observe(resumeSection);
-    } else {
-        // Mobile: Explicitly DO NOT set a source for the iframe
-        // This prevents the "external app" warning you're seeing
-        resumeIframe.removeAttribute('src'); 
+    if (resumeSection && resumeIframe) {
+        if (isDesktop) {
+            // Desktop: Use the observer to load the PDF preview
+            const pdfObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !resumeIframe.src.includes('resume.pdf')) {
+                        resumeIframe.src = "image/cv_hr.pdf#toolbar=0";
+                    }
+                });
+            }, { threshold: 0.1 });
+            pdfObserver.observe(resumeSection);
+        } else {
+            // Mobile: Explicitly DO NOT set a source for the iframe
+            // This prevents the "external app" warning you're seeing
+            resumeIframe.removeAttribute('src'); 
+        }
     }
-}
 
     // Refresh Reveal for Certificates and Resume
     document.querySelectorAll('.reveal').forEach(el => {
