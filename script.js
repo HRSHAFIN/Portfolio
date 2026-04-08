@@ -127,6 +127,57 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // 7.1 See More Projects Logic
+    const seeMoreBtn = document.getElementById('see-more-btn');
+    const allProjectCards = document.querySelectorAll('.project-card');
+    let isExpanded = false;
+
+    function applySeeMoreState() {
+        // Check which filter is currently active
+        const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+        
+        if (activeFilter === 'all') {
+            // Show button and apply collapse logic if 'All' is selected
+            seeMoreBtn.style.display = 'inline-block';
+            allProjectCards.forEach((card, index) => {
+                if (!isExpanded && index > 2) {
+                    card.classList.add('collapsed');
+                } else {
+                    card.classList.remove('collapsed');
+                }
+            });
+            // Update button text and icon
+            seeMoreBtn.innerHTML = isExpanded 
+                ? 'See Less <i class="fas fa-chevron-up"></i>' 
+                : 'See More Projects <i class="fas fa-chevron-down"></i>';
+        } else {
+            // Hide the button and show all relevant cards if a specific category is clicked
+            seeMoreBtn.style.display = 'none';
+            allProjectCards.forEach(card => card.classList.remove('collapsed'));
+        }
+    }
+
+    if (seeMoreBtn) {
+        applySeeMoreState(); // Run on load
+        
+        seeMoreBtn.addEventListener('click', () => {
+            isExpanded = !isExpanded;
+            applySeeMoreState();
+            
+            // Force a scroll event to trigger your reveal animations on the newly shown cards
+            if (isExpanded) {
+                setTimeout(() => window.dispatchEvent(new Event('scroll')), 50);
+            }
+        });
+
+        // Hook into your existing filter buttons to re-evaluate the See More state
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                setTimeout(applySeeMoreState, 10);
+            });
+        });
+    }
+    
     // 8. Scroll Reveal
    const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
