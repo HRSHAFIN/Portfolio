@@ -352,3 +352,56 @@ header.scrolled { padding: 0.5rem 0; box-shadow: 0 5px 20px rgba(0,0,0,0.4); }
     position: relative;
     z-index: 2; 
 }
+
+/* --- Celestial Arc Animation (Sun/Moon) --- */
+.celestial-pivot {
+    position: absolute;
+    bottom: -15vw; /* Sets the invisible pivot point below the screen */
+    left: 50%;
+    width: 0;
+    height: 0;
+    /* The cubic-bezier gives it a slight gravity/easing effect */
+    transition: transform 1.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+    z-index: 1; /* Sits behind your text */
+    pointer-events: none; /* Ensures it doesn't block your buttons */
+}
+
+.celestial-body {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    bottom: 35vw; /* Distance from the pivot (controls the height of the arc) */
+    left: -150px; /* Centers the circle perfectly on the pivot */
+    transition: background 1.5s, box-shadow 1.5s;
+}
+
+/* ☀️ LIGHT MODE: Sun at bottom left */
+[data-theme="light"] .celestial-pivot {
+    transform: rotate(-65deg); /* Swings the pendulum to the left */
+}
+
+[data-theme="light"] .celestial-body {
+    background: radial-gradient(circle at 30% 30%, #fde047, var(--primary-color));
+    box-shadow: 0 0 80px rgba(234, 88, 12, 0.5);
+}
+
+/* 🌙 DARK MODE: Moon at bottom right (Your default state) */
+body:not([data-theme="light"]) .celestial-pivot {
+    transform: rotate(65deg); /* Swings the pendulum to the right */
+}
+
+body:not([data-theme="light"]) .celestial-body {
+    background: radial-gradient(circle at 30% 30%, #f8fafc, #94a3b8);
+    box-shadow: 0 0 80px rgba(148, 163, 184, 0.3);
+}
+
+/* Mobile adjustments to keep the proportions right */
+@media screen and (max-width: 768px) {
+    .celestial-body {
+        width: 180px;
+        height: 180px;
+        left: -90px;
+        bottom: 70vw; /* Pushes the arc higher on tall mobile screens */
+    }
+}
